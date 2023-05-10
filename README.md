@@ -11,7 +11,7 @@ To interface an ultrasonic pair and measure the distance in centimeters , calcul
 5.	Connecting wires 
 
 
-### THEORY: 
+## THEORY: 
 The HC-SR04 ultrasonic sensor uses SONAR to determine the distance of an object just like the bats do. It offers excellent non-contact range detection with high accuracy and stable readings in an easy-to-use package from 2 cm to 400 cm or 1” to 13 feet.
 
 The operation is not affected by sunlight or black material, although acoustically, soft materials like cloth can be difficult to detect. It comes complete with ultrasonic transmitter and receiver module.
@@ -41,7 +41,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 
-### PROCEDURE:
+## PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
 3.	If needed, install the drivers.
@@ -54,12 +54,37 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 10.	Plot the graph for the output voltage vs the resistance 
 
 
-### PROGRAM 
+## PROGRAM:
+
+```
+Developed by A.Thiyagarajan
+Ref.no: 212222240110
+#define echoPin 9
+#define trigPin 10
+long duration;
+int distance;
+void setup()
+{
+  pinMode(trigPin,OUTPUT);
+  pinMode(echoPin,INPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  digitalWrite(trigPin,LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin,LOW);
+  duration=pulseIn(echoPin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+}
 
 
-
-
-
+```
 
 ### Distance vs measurement table 
 
@@ -80,14 +105,19 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
  
 
 
+## OUTPUT:
+
+### Before simulation:
+![Ex4-before](https://github.com/A-Thiyagarajan/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/118707693/d4bb7a24-2c49-44a3-b750-a3f7d95e63fd)
 
 
+### After simulation:
+
+![Ex4-after](https://github.com/A-Thiyagarajan/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/118707693/9ca3eff3-9911-44a1-b3b2-8805574e777b)
 
 
-
-
-### RESULTS
-
+## RESULTS
+Interfacing digital output with arduino ultrasonic sensor was successfully created.
 
 
  
